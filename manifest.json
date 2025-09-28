@@ -1,0 +1,25 @@
+{
+    "bundles":
+    [
+        {
+            "name": "fonts",
+            "assets":
+            [
+                {
+                    "alias": "PixelifySans",
+                    "src": "fonts/PixelifySans.ttf"
+                }
+            ]
+        },
+        {
+            "name": "playing_cards",
+            "assets":
+            [
+                {
+                    "alias": "playing_cards_small",
+                    "src": "/images/cards/deck_classic_light_2color_0.png"
+                }
+            ]
+        }
+    ]
+}
