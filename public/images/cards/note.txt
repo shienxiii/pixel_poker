@@ -1,17 +1,19 @@
-spritesheet dimension: 896x256 px
+front spritesheet dimension: 896x256 px
 
-card arrangement:
+front card arrangement:
 + 14 x 4
 + joker and blank at the end
 + suit sorted spade, heart, club, diamond
++ empty space on x = 336 px
++ empty space on y = 16 px
+
+rear card arrangement:
++ 7 x 4
 
 margin to edge card = 12x2 px
-margin between cards = 24x4px
+margin between cards = 24x4 px
 
-empty space on x = (12 * 2) + (24 * 13) = 24 + 312 = 336
-empty space on y = (2 * 2) + (4 * 3) = 4 + 12 = 16
+card width = 40 px
+card height = 60 px
 
-card width = (896 - 336) / 14 = 40
-card height = (256 - 16) / 4 = 60
-
-sprite splitting dimension: (896 / 14) x (256 / 4) = 64x64
+sprite splitting dimension: 64x64 px

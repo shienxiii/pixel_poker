@@ -1,5 +1,8 @@
 import * as PIXI from "pixi.js";
 import { Deck } from "./deck.js";
+import { Player } from "./player.js";
+import { dealDeckToHand } from "./dealer.js";
+import { Table } from "./table.js";
 
 
 (async() =>
@@ -17,11 +20,29 @@ import { Deck } from "./deck.js";
 
     PIXI.TexturePool.textureOptions.scaleMode = 'nearest';
 
-    // initialize manifest.json as that's where reference to all assets are
-    await PIXI.Assets.init({manifest: "/manifest.json"})    
+    await PIXI.Assets.init({manifest: "./manifest.json"})    
+
+    // create a new table, this is the central part of the game session
+    // we want 6 players max on the table
+    const table = new Table(6);
+
+    table.addNewPlayer("shien");
+    table.addNewPlayer("fubuki");
+    table.addNewPlayer("miko");
+    table.addNewPlayer("suisei");
+    table.logPlayers();
+
+    table.seatPlayers();
+    table.seatPlayers();
+    table.logSeats();
+
+
 
     const deck = new Deck();
-    await deck.InitializeSprites();
+    await deck.initializeSprites();
+    deck.shuffleDeck();
+
+    let player = new Player("shien");
 
     for(let i = 0; i < deck.cards.length; i++)
     {

@@ -10,13 +10,13 @@ export class Deck
         this.height = 60;
     }
 
-    async InitializeSprites()
+    async initializeSprites()
     {
         this.cardAssets = await PIXI.Assets.loadBundle("playing_cards");
-        this.#ParseCardSpritesheetFront(this.cardAssets.playing_cards_small);
+        this.#parseCardSpritesheetFront(this.cardAssets.playing_cards_small);
     }
 
-    #ParseCardSpritesheetFront(textureSource)
+    #parseCardSpritesheetFront(textureSource)
     {
         // NOTE: card spritesheet are arranged in 64x64 inclusive of empty spaces
         // NOTE 2: Check note in /images/cards/note.txt for more info
@@ -32,17 +32,27 @@ export class Deck
 
                 const frame = new PIXI.Rectangle(x, y, CARD_WIDTH, CARD_HEiGHT);
                 
-                this.#AddCardSprite(RANK[column], SUIT[row], textureSource, frame);
+                this.#addCardSprite(RANK[column], SUIT[row], textureSource, frame);
             }
         }
     }
 
-    #AddCardSprite(rank, suit, textureSource, frame)
+    #addCardSprite(rank, suit, textureSource, frame)
     {
         const cardFrame = new PIXI.Texture({source: textureSource, frame: frame});
         const cardSprite = PIXI.Sprite.from(cardFrame);
         //cardSprite.anchor.set(0.5);
 
-        this.cards[this.cards.length] = new Card(rank, suit, cardSprite);
+        this.cards.push(new Card(rank, suit, cardSprite));
+    }
+
+    shuffleDeck()
+    {
+        // shuffle the deck using Fisher-Yates shuffle algorithm
+        for(let i = this.cards.length - 1; i >= 0; i--)
+        {
+            const j = Math.floor(Math.random() * (i + 1));
+            [this.cards[i], this.cards[j]] = [this.cards[j], this.cards[i]];
+        }
     }
 }
