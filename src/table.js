@@ -61,6 +61,10 @@ export class Table
         this.state.addNewPlayer(newPlayer);
     }
 
+    /**
+     * To be called prior to round start to try and fill all seat with
+     * all the players currently waiting on the table
+     */
     seatPlayers()
     {
         const emptySeats = this.getEmptySeats();
@@ -81,11 +85,19 @@ export class Table
         
     }
 
+    /**
+     * Gets all the seats that are currently not occupied by a player
+     */
     getEmptySeats()
     {
         return this.seats.filter(seat => seat.player == null);
     }
 
+    /**
+     * Test if this player is currently occupying any seat on the table
+     * @param {Player} player 
+     * @returns 
+     */
     #playerAlreadySeated(player)
     {
         const index = this.seats.findIndex((seat) => 
@@ -96,6 +108,7 @@ export class Table
         return index != -1;
     }
 
+    // DEBUG ONLY
     logPlayers()
     {
         this.state.players.forEach(player => {
@@ -103,6 +116,7 @@ export class Table
         });
     }
 
+    // DEBUG ONLY
     logSeats()
     {
         this.seats.forEach(seat => {
