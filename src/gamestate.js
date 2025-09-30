@@ -22,7 +22,7 @@ export class GameState
      * 
      * @param {String} playerName name of the player joining the game
      */
-    onPlayerJoinedRoom(playerName)
+    addNewPlayer(playerName)
     {
         this.players.push(new Player(playerName));
     }
@@ -56,6 +56,14 @@ export class GameState
                 this.playing.push(players[i]);
             }
         }
+    }
+
+    /**
+     * Event to run at the start of the round.
+     */
+    onRoundStart()
+    {
+        
     }
 
     #removeInvalidatedPlayers()

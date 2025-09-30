@@ -41,8 +41,8 @@ export class Deck
     {
         const cardFrame = new PIXI.Texture({source: textureSource, frame: frame});
         const cardSprite = PIXI.Sprite.from(cardFrame);
-        //cardSprite.anchor.set(0.5);
-
+        cardSprite.anchor.set(0.5);
+        cardSprite.position
         this.cards.push(new Card(rank, suit, cardSprite));
     }
 

@@ -7,16 +7,16 @@ export class Card
         this.sprite = sprite;
 
         // NOTE TO SELF: This method is need to bind pointerdown event onto OnClicked() of this class
-        this.sprite.addEventListener("pointerdown", ev => this.OnClicked());
+        this.sprite.addEventListener("pointerdown", ev => this.onClicked());
     }
 
-    ToggleClickable(canClick)
+    toggleClickable(canClick)
     {
         this.sprite.eventMode = canClick ? "static" : "none";
         this.sprite.cursor = "pointer";
     }
 
-    OnClicked()
+    onClicked()
     {
         console.log(this);
     }

@@ -2,7 +2,7 @@
  * 
  * @param {Array<Card>} deck 
  * @param {Array<Card>} hand 
- * @param {number} count 
+ * @param {Number} count 
  */
 export function dealDeckToHand(deck, hand, count)
 {
